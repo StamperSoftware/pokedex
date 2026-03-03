@@ -1,9 +1,19 @@
 package main
-
 import (
+	"os"
 	"fmt"
 )
 
 func main() {
-	fmt.Println("Hello world")
+		
+	config, err := initConfig()
+	
+	if err != nil {
+		fmt.Printf("Error with config:\n-%v\n", err)
+		os.Exit(1)
+	}
+	
+	startRepl(&config)	
+	
 }
+
