@@ -41,12 +41,6 @@ type LocationAreaResponse struct {
 	
 }
 
-type Pokemon struct {
-	Name string `json:"name"`
-	URL string `json:"url"`
-}
-
-
 func GetLocation(location string, config *Config) (LocationAreaResponse, error) {
 
 	data := LocationAreaResponse{}
