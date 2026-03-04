@@ -9,17 +9,18 @@ import (
 
 func startRepl(config *Config) {
 
-	userInput := "" 
+	userInput := []string{""}
 	scan := bufio.NewScanner(os.Stdin)
 	cmds := getCommands()	
 	
-	for userInput != "exit" {
+	for userInput[0] != "exit" {
 		fmt.Printf("Pokedex > ")
 		scan.Scan()
-		userInput = scan.Text()
-		cmd, ok := cmds[userInput]
+		userInput = strings.Split(scan.Text(), " ")
+
+		cmd, ok := cmds[userInput[0]]
 		if ok {
-			err := cmd.callback(config)
+			err := cmd.callback(config, userInput[1:])
 			if err != nil {
 				fmt.Printf("Error: %s\n",err)
 			}

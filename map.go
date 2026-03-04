@@ -5,7 +5,7 @@ import (
 	"errors"
 )
 
-func commandMapNext(config *Config) error {
+func commandMapNext(config *Config, params []string) error {
 	
 	locations, err := GetLocations(config.location.next, config)
 	
@@ -21,7 +21,7 @@ func commandMapNext(config *Config) error {
 	return nil
 }
 
-func commandMapPrev(config *Config) error {
+func commandMapPrev(config *Config, params []string) error {
 	
 	if config.location.prev == "" {
 		return errors.New("on first page")
